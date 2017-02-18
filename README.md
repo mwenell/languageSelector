@@ -20,7 +20,12 @@ Language selector is a Javascript library which select languages on HTML pages b
 - Insert language.js into "language" folder in your website
 - Add following tag in your HTML code as first child of body tag:
 ```
-<script id="language_script" data-languages="[LANGUAGE LIST]" data-debug="[1|0]" src="/language/language.js"></script>
+<script 
+   id="language_script" 
+   data-languages="[LANGUAGE LIST]" 
+   data-debug="[1|0]" 
+   src="/language/language.js">
+</script>
 ```
 Where
 - id="language_script" must be defined and the value must be "language_script"
@@ -82,7 +87,8 @@ function languageChangeCallback(newLang, element){
       // newLang variable has now the language code (en,fi,sv) as value, do somthing with it
    }
    if(typeof element != 'undefined){
-      // element is a HTML element which has been used to change the language, e.g. image flag or language select tag
+      // element is a HTML element which has been used to change the language, 
+      // e.g. image flag or language select tag
       // Use it to do what ever you want
    }
 }
