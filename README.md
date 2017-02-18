@@ -35,7 +35,7 @@ Use lang attribute in your HTML to mark different language version in your HTML.
 ```
 <p lang="en">This is english version of the text</p>
 <p lang="fi">Tämä on suomenkileinen versio tekstistä</p>
-<p lang="sv">Det här är svanska version om text</p>
+<p lang="sv">Den här är svenska version om text</p>
 ```
 You may use the lang attribute in any HTML tag like p, h1, h2, ol, li, div, img etc.
 
