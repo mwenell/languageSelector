@@ -27,8 +27,7 @@ Where
 - data-languages="[LANGUAGE LIST]" is a list of all supported languages separated by ",", e.g. data-languages="en,fi,sv"
    Notice: You must have text version of all language depended elements for each languages
 - data-debug="[1|0]" will activate in debug mode logging to console, data-debug="1" will activate debug logging
-- src="/language/language.js" is the URL to the javascript library file
-   Notice: This library needs only this one language.js file to be included as first child of body tag. Do not add this line at the end of body or middle.
+- src="/language/language.js" is the URL to the javascript library file. Notice: This library needs only this one language.js file to be included as first child of body tag. Do not add this line at the end of body or middle.
 
 # Language Versions of Text
 Use lang attribute in your HTML to mark different language version in your HTML. See example below and in example.html file to see how it works.
@@ -42,12 +41,10 @@ You may use the lang attribute in any HTML tag like p, h1, h2, ol, li, div, img 
 # Language Selectors
 Language selector is the HTML element which user click or select to change the language. It can be a language flag image, text or almost any kind of visual element.
 The libarary support following language elements:
-- Clickable HTML tag
-   Any HTML tag/element user can click, e.g. img, div or p. The tag must have the lang="en" attribute to define which language the selector will switch on, e.g. english flag image has lang="en" and finnish flag image has lang="fi"
-- SELECT tag
-   Normal select list of language options where the option value is always the language code as en|fi|sv.
-- INPUT tag
-   Normal text input where user or javascript can write the language code as en|fi|sv.
+- Clickable HTML tag. Any HTML tag/element user can click, e.g. img, div or p. The tag must have the lang="en" attribute to define which language the selector will switch on, e.g. english flag image has lang="en" and finnish flag image has lang="fi"
+- SELECT tag. Normal select list of language options where the option value is always the language code as en|fi|sv.
+- INPUT tag. Normal text input where user or javascript can write the language code as en|fi|sv.
+
 Language selectors must be inside of LANGUAGE tag. The library find all LANGUAGE tag and expect that all elements inside the tag are language selectors. See example code below.
 ```
 	<language class="languageFrameClick">
