@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="google-site-verification" content="BUu5CCpJsvHsQILM5PY3nqCrZhkAGVZLZpvG_HVPSwQ" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<style>
+		.languageFrameClick, .languageFrameSelect, .languageFrameInput, .textFrame {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            height: 30px;
+            width: 50%;
+            text-align: center;
+            background-color: transparent;
+		}
+
+        .languageFrameClick {
+            top: 100px;
+        }
+        
+        .languageFrameSelect {
+            top: 150px;
+        }
+        
+        .languageFrameInput {
+            top: 200px;
+        }
+        
+        .textFrame {
+            top: 250px;
+            width: 50%;
+            height: 70px;
+            font-size: 30px;
+            color: black;
+            border: 1px solid black;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .textFrame>p {
+            margin: 0px;
+        }
+        
+		.langFlag {
+            margin: 0px 5px 0px 5px;
+			border: 1px solid black;
+            cursor: pointer;
+		}
+        
+        .selectedLang {
+            cursor: auto;
+        }
+		
+	</style>
+
+</head>
+<body>
+    <script id="language_script" data-languages="en,fi" data-debug="1" src="language.js?t=2"></script>
+
+	<language class="languageFrameClick">
+		<img lang="fi" class="langFlag" id="fi" src="/langimg/fi.png">
+		<img lang="en" class="langFlag" id="en" src="/langimg/en.png">
+	</language>
+
+    <language class="languageFrameSelect">
+        <select>
+            <option value="">Language/Kieli/Språk</option>
+            <option value="en">English</option>fi>
+            <option value="fi">Suomi/Finnish</option>fi>
+        </select>
+	</language>
+
+    <language class="languageFrameInput">
+        <input placeholder="en or fi">
+	</language>
+
+    
+	<div class="textFrame">
+        <p lang="fi" class="placeHeadline">Katso täällä millä selaimilla tämä kirjasto toimii.</p>
+        <p lang="en" class="placeHeadline">See here which browsers this library support.</p>
+    </div>
+</body>
+</html>
