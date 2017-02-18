@@ -22,6 +22,9 @@
 
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
+//
+// Version 0.1
+//
 
 var languageSelector = {
     defaultLanguage: 'en', // Default language if no language available
