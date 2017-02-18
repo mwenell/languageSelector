@@ -39,13 +39,13 @@ Use lang attribute in your HTML to mark different language version in your HTML.
 You may use the lang attribute in any HTML tag like p, h1, h2, ol, li, div, img etc.
 
 # Language Selectors
-Language selector is the HTML element which user click or select to change the language. It can be a language flag image, text or almost any kind of visual element.
+Language selector is the HTML element which user clicks or selects to change the language. It can be a language flag image, text or almost any kind of visual element.
 The libarary support following language elements:
 - Clickable HTML tag. Any HTML tag/element user can click, e.g. img, div or p. The tag must have the lang="en" attribute to define which language the selector will switch on, e.g. english flag image has lang="en" and finnish flag image has lang="fi"
 - SELECT tag. Normal select list of language options where the option value is always the language code as en|fi|sv.
 - INPUT tag. Normal text input where user or javascript can write the language code as en|fi|sv.
 
-Language selectors must be inside of LANGUAGE tag. The library find all LANGUAGE tag and expect that all elements inside the tag are language selectors. See example code below.
+Language selectors must be inside of LANGUAGE tag. The library find all LANGUAGE tags and expect that all elements inside the tag are language selectors. See example code below.
 ```
 	<language class="languageFrameClick">
 		<img lang="fi" class="langFlag" id="fi" src="img/fi.png">
