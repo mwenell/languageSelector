@@ -23,7 +23,7 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 //
-// Version 0.1
+// Version 0.7
 //
 
 var languageSelector = {
