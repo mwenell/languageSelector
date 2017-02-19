@@ -29,13 +29,18 @@
             font-size: 24px;
             color: black;
             border: 1px solid black;
-            padding: 5px;
+            padding: 20px;
             text-align: center;
             margin: 50px 25% auto 25%;
         }
         
         .textFrame>p {
             margin: 0px;
+        }
+        
+        .textSupportTestFrame button {
+            font-size: 24px;
+            margin: 20px;
         }
         
 		.langFlag {
@@ -78,40 +83,42 @@
     </div>
 
     <script>
-        var testURL = "https://www.surveygizmo.com/s3/3374527/browser-support-test?version=0.6";
+        var testURL = "https://www.surveygizmo.com/s3/3374527/browser-support-test?version=0.7";
     </script>
     
     <div lang="fi" class="textSupportTestFrame">
         <p class="placeHeadline">Tarvitsemme apuasi!</p>
-        <p>Auta testaamaan toimiiko kielivalinta sinun selaimessasi.</p>
+        <p style="text-align: left;">Auta testaamaan toimiiko kielivalinta sinun selaimessasi.</p>
         <ol style="text-align: left;">
             <li>testaa kielivalinnan toiminta tällä sivulla</li>
-            <li>ilmoita toimivuus</li>
+            <li>ilmoita toimiiko selaimellasi</li>
             <li>näet kaikki testitulokset Google Sheetissä</li>
         </ol>
-        <button onclick="location.href=testURL;">ilmoita toimivuus</button>
+        <button onclick="location.href=testURL;">ilmoita toimivuus selaimellasi</button>
     </div>
 
     <div lang="en" class="textSupportTestFrame">
         <p class="placeHeadline">We need your help!</p>
-        <p>Help us test language selector in your browser.</p>
+        <p style="text-align: left;">Help us test how language selector works with your browser.</p>
         <ol style="text-align: left;">
             <li>test language selector in this page</li>
             <li>tell us if it worked or not</li>
             <li>see all test results in Google Sheet</li>
         </ol>
-        <button onclick="location.href=testURL;">tell us how it worked</button>
+        <button onclick="location.href=testURL;">tell us how it works with your browser</button>
     </div>
 
     <div lang="sv" class="textSupportTestFrame">
-        <p class="placeHeadline">Help us test if the language selector works with your browser:</p>
+        <p class="placeHeadline">We need your help!</p>
+        <p style="text-align: left;">Help us test how language selector works with your browser.</p>
         <ol style="text-align: left;">
-            <li>switch languages and test that it works</li>
-            <li>click button and tell us if it worked</li>
-            <li>see test results in Google Sheet</li>
+            <li>test language selector in this page</li>
+            <li>tell us if it worked or not</li>
+            <li>see all test results in Google Sheet</li>
         </ol>
-        <button onclick="location.href=testURL;">tell us if the language switch works in yoru browser</button>
+        <button onclick="location.href=testURL;">tell us how it works with your browser</button>
     </div>
+
     
 </body>
 </html>
