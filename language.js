@@ -41,7 +41,8 @@ var languageSelector = {
     elementOfScript: null,
     
     actualLanguage: null,
-    languageList: null,
+    languageArray: null,
+    languageList: [],
     
     debugMode: false,
     
@@ -57,12 +58,21 @@ var languageSelector = {
         languageSelector.log("languageSelector: Started");
         // Read in all possible languages from script data-languages
         var langListStr = (typeof languageSelector.elementOfScript.dataset.languages == 'string' ? languageSelector.elementOfScript.dataset.languages : '');
-        var correctListReg = /^([a-z]{2})([,][a-z]{2})*$/;
         
-        if(langListStr != '' && correctListReg.test(langListStr)){
-            languageSelector.languageList = langListStr.split(',');
+        if(langListStr != ''){
+            languageSelector.languageArray = langListStr.split(',');
             // Define the default language to be the first language in data-languages list
-            languageSelector.defaultLanguage = languageSelector.languageList[0];
+            languageSelector.defaultLanguage = languageSelector.languageArray[0];
+            // Validate languages and build list of languages
+            for(var c = 0; c < languageSelector.languageArray.length; c++){
+                var lang = languageSelector.validateISO6391(languageSelector.languageArray[c]);
+                if(lang == ''){
+                    // Invalid language code, cannot continue
+                    languageSelector.log('languageSelector: Invalid language code ' + languageSelector.languageArray[c] + 'in script parameter (data-languages)');
+                    return;
+                }
+                languageSelector.languageList[lang] = true;
+            }
             // Set the actual language on
             languageSelector.setLanguage(languageSelector.getLang(), true);
             // Init all language selector elements as img, select etc. after the whole DOM has been loaded
@@ -159,17 +169,16 @@ var languageSelector = {
     
     
     //
-    // setLanguage(lang) sets new language and store the language value in localstorage
+    // setLanguage(lang) select new language and store the language value in localstorage
     //
     
     setLanguage: function(lang, refresh){
-        lang = lang || languageSelector.getLang();
+        lang = (typeof lang == 'string' ? languageSelector.isSupportedLanguage(lang) : languageSelector.getLang());
         refresh = refresh || false;
-        lang = lang.substr(0,2);
-        if(!languageSelector.isSupportedLanguage(lang) || (lang == languageSelector.actualLanguage && !refresh)) return; // Already selected or unsupported language
+        if(lang == '' || (lang == languageSelector.actualLanguage && !refresh)) return; // Already selected or unsupported language
         languageSelector.actualLanguage = lang;
         if(typeof Storage !== 'undefined') {
-            lang = localStorage.setItem('language', lang);
+            localStorage.setItem('language', lang);
         }
         document.body.insertBefore(languageSelector.getStyleElement(languageSelector.lang), languageSelector.elementOfScript);
         languageSelector.setSelector();
@@ -223,12 +232,12 @@ var languageSelector = {
             returnValue = document.createElement("style");
             returnValue.id = languageSelector.styleId;
         }
-        if(languageSelector.languageList != null){
+        if(languageSelector.languageArray != null){
             var styleString = '';
             if(languageSelector.actualLanguage == null) languageSelector.getLang();
-            for(var c = 0; c < languageSelector.languageList.length; c++){
-                if(languageSelector.actualLanguage != languageSelector.languageList[c])
-                    styleString += ':not(' + languageSelector.nameOfSelectorFrame + ')>:lang(' + languageSelector.languageList[c] + ') {display: none;} ';
+            for(var c = 0; c < languageSelector.languageArray.length; c++){
+                if(languageSelector.actualLanguage != languageSelector.languageArray[c])
+                    styleString += ':not(' + languageSelector.nameOfSelectorFrame + ')>:lang(' + languageSelector.languageArray[c] + ') {display: none;} ';
             }
             returnValue.innerHTML = styleString;
         }
@@ -247,23 +256,36 @@ var languageSelector = {
             lang = localStorage.getItem('language');
         }
         if(typeof lang != 'string') {
-            if(typeof lang != 'string') 
-                lang = (typeof window.navigator.languages[0] == 'string' ? window.navigator.languages[0] : null);
-            if(typeof lang != 'string') 
-                lang = (typeof window.navigator.language == 'string' ? window.navigator.language : null);
-            if(typeof lang != 'string') 
-                lang = (typeof window.navigator.browserLanguage == 'string' ? window.navigator.browserLanguage : null);
-            if(typeof lang != 'string') 
-                lang = (typeof window.navigator.userLanguage == 'string' ? window.navigator.userLanguage : null);
-            if(typeof lang != 'string') 
-                lang = languageSelector.defaultLanguage;
+            // Try user's preferred languages
+            if(typeof window.navigator.languages[0] == 'string'){
+                for(var c = 0; c < window.navigator.languages.length; c++){
+                    lang = languageSelector.isSupportedLanguage(window.navigator.languages[c]);
+                    if(lang != '') return lang;
+                }
+            }
+            
+            // Try preferred language of the user as e.g. browser language
+            if(typeof window.navigator.language == 'string') {
+                lang = languageSelector.isSupportedLanguage(window.navigator.language);
+                if(lang != '') return lang;
+            }
+            
+            // Try IE OS language
+            if(typeof window.navigator.browserLanguage == 'string'){
+                lang = languageSelector.isSupportedLanguage(window.navigator.browserLanguage);
+                if(lang != '') return lang;
+            }
+
+            // Try IE User Language
+            if(typeof window.navigator.userLanguage == 'string'){
+                lang = languageSelector.isSupportedLanguage(window.navigator.userLanguage);
+                if(lang != '') return lang;
+            }
+            
+            // No preferred language, use default language
+            lang = languageSelector.defaultLanguage;
         }
-        lang = lang.substr(0,2);
-        if(languageSelector.isSupportedLanguage(lang)){
-            languageSelector.actualLanguage = lang;
-            return lang;
-        }
-        return languageSelector.defaultLanguage;
+        return lang;
     },
     
     
@@ -272,14 +294,23 @@ var languageSelector = {
     //
     
     isSupportedLanguage: function(lang){
-        if(languageSelector.languageList.length > 0){
-            for(var c = 0; c < languageSelector.languageList.length; c++){
-                if(languageSelector.languageList[c] == lang) return true;
-            }
-        }
+        lang = languageSelector.validateISO6391(lang);
+        if(typeof languageSelector.languageList[lang] != 'undefined') return lang;
         languageSelector.log('languageSelector warning: Found unsupported language selector in use (' + lang + ')');
         return false;
     },
+    
+    //
+    // Validate the language code to be ISO 639-1 compatible and return validated language code
+    //
+    
+    validateISO6391: function(lang){
+        var correctLangReg = /^[a-z]{2}|^zh[-]Han[st]/;
+        languages = correctLangReg.exec(lang);
+        if(languages == null) return '';
+        return languages[0];
+    },
+    
     
     // 
     // Log if debug mode is on in script tag, Use <script data-debug="1" ...> to activate
