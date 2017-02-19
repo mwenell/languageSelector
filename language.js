@@ -23,7 +23,7 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 //
-// Version 0.7
+// Version 0.8
 //
 
 var languageSelector = {
@@ -261,7 +261,7 @@ var languageSelector = {
         }
         if(typeof lang != 'string') {
             // Try user's preferred languages
-            if(typeof window.navigator.languages[0] == 'string'){
+            if(typeof window.navigator.languages != 'undefined' && typeof window.navigator.languages[0] == 'string'){
                 for(var c = 0; c < window.navigator.languages.length; c++){
                     lang = languageSelector.isSupportedLanguage(window.navigator.languages[c]);
                     if(lang != '') return lang;
