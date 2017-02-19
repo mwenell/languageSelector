@@ -2,6 +2,9 @@
 Language selector is a Javascript library which selects languages/translations on HTML pages by using :lang() selector.
 It is useful on multilanguage HTML pages which are using HTML lang property in translations.
 
+# Test
+Test the language selector [here](https://kommentit.fi/language/example.html "Example.html page") 
+
 # Features
 - Switch between languages by clicking language images or by selecting language in drop-down list
 - Insert one script tag and you have language support in your page
