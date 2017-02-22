@@ -15,8 +15,8 @@ Test the language selector [here](https://kommentit.fi/language/example.html "Ex
 - When you are using this library, do not use :lang() selector in CSS
 
 # Known Bugs or Missing Features
-- Not well tested yet, only Chrome 56.
-- Does not create HTML code of language selector switch, must be done by yourself
+- Not well tested yet, only Chrome 56, Firefox and iOS Safari in iPhone and iPad.
+- Does not create HTML code of language selector switch user interface, this must be done by yourself
 
 # Installation
 - Insert language.js into "language" folder in your website
@@ -77,15 +77,14 @@ Use lang attribute in your HTML to mark different language translations in your 
 ```
 You may use the lang attribute in any HTML tag like p, h1, h2, ol, li, div, img etc.
 
-# How the language is selected
-1. The language the user has selected before, stored in localstorage
-2. Then language the user has selected as preferred languages in the browser, the first one which is supported on the page
-3. The language of the browser, if supported on the page
-4. The default language of the page (first language code in the script tag)
+# How the Actual Language is Selected
+1. Use the language the user has selected before, stored in localstorage
+2. Use then language the user has selected as preferred languages in the browser, the first one which is supported on the page
+3. Use the language of the browser, if supported on the page
+4. Use the default language of the page (first language code in the script tag)
 5. User clicks language selector and switch to new language
 
 # How the Correct Translation is Showed or Hided
-
 The Javascript code generates as first child of body tag a "style" tag which includes CSS styles to show the selected language translations and hide unselected languages. Below is and example of the content of style tag. Do not insert this "style" tag into your HTML, Javascript creates it automatically.
 ```
 
@@ -101,6 +100,25 @@ The Javascript code generates as first child of body tag a "style" tag which inc
 </script>
 ```
 This "style" will show english translation and hides both Finnish and Swedish translations.
+
+# How to Get the Actual Language in Javascript
+The language code of the selected language is in global variable: languageSelector.actualLanguage
+See example how to use it:
+```
+<script>
+switch(languageSelector.actualLanguage){
+	case 'en':
+		// Do something when English selected
+		break;
+	case 'fi':
+	case 'sv':
+		// Do something when Finnish or Swedish selected
+		break;
+	default:
+		// Do something if no English, Finnish or Swedish selected
+}
+</script>
+```
 
 # Callback of Language Change
 Whenever the language will be set or changed the library will call function languageChangeCallback(newLang, element) if the function exists.
