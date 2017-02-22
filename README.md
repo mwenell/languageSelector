@@ -108,11 +108,11 @@ See example how to use it:
 <script>
 switch(languageSelector.actualLanguage){
 	case 'en':
-		// Do something when English selected
+		// Do something if English selected
 		break;
 	case 'fi':
 	case 'sv':
-		// Do something when Finnish or Swedish selected
+		// Do something if Finnish or Swedish selected
 		break;
 	default:
 		// Do something if no English, Finnish or Swedish selected
