@@ -10,15 +10,14 @@ Test the language selector [here](https://kommentit.fi/language/example.html "Ex
 # Features
 - Switch between languages by clicking language images or by selecting language in drop-down list
 - Insert one script tag and you have language support in your page
-- No Javascript coding, HTML is enough
-- Add language selectors switch with "LANGUAGE" HTML tag, e.g. one at top of the page and other in footer
+- No Javascript coding, HTML is all you need to manage
+- Add "LANGUAGE" HTML tag in your page and insert your language flags in it
 - Use as many languages as you wish
-- Tag different language translations in your text by using standard "lang" parameter in your HTML tags
-- When you are using this library, do not use :lang() selector in CSS
+- Tag different language translations in your text by using standard "lang" parameter in your HTML code
+- When you are using this library, do not use :lang() selector in your CSS
 
-# Known Bugs or Missing Features
-- Not well tested yet, only Chrome 56, Firefox and iOS Safari in iPhone and iPad.
-- Does not create HTML code of language selector switch user interface, this must be done by yourself
+# Missing Features
+- Does not create HTML code of language selector flags, this must be done by yourself
 
 # Installation
 - Insert language.js into "language" folder in your website
@@ -32,16 +31,16 @@ Test the language selector [here](https://kommentit.fi/language/example.html "Ex
 </script>
 ```
 Where
-- id="language_script" must be defined and the value must be "language_script"
+- id="language_script" must have value "language_script"
 - data-languages="[LANGUAGE LIST]" is a list of all supported languages separated by ",", e.g. data-languages="en,fi,sv". The first language is the default language of the page. Notice: You must have text version of all language depended elements for each languages
 - data-debug="[1|0]" will activate in debug mode logging to console, data-debug="1" will activate debug logging
 - src="/language/language.js" is the URL to the javascript library file. Notice: This library needs only this one language.js file to be included as first child of body tag. Do not add this line at the end of body or middle.
 
-- Insert language switch bar by using "LANGUAGE" tag  (see below how)
+- Insert language selector tag as "LANGUAGE" tag  (see below how)
 - Translate your content by using "lang" attribute in your HTML code (see below how)
 
-# Language Selector Switch
-Language selector switch is the HTML element which user clicks or selects whe s/he wants to change the language. It can be an image of language flag, text or almost any kind of visual element.
+# Language Selector Tag
+Language selector tag is the HTML element which user clicks or selects whe s/he wants to change the language. It can be an image of language flag, text or almost any kind of visual element.
 The library supports following HTML elements:
 - Clickable HTML tag: Any HTML tag/element which user can click, e.g. img, div or p. The tag must have the lang="en" attribute (ISO 639-1) to define which language it will select, e.g. english flag image has lang="en" and finnish flag image has lang="fi"
 - SELECT tag: Normal select list of language options where the option value is always the language code as en|fi|sv (ISO 639-1).
@@ -66,6 +65,8 @@ Language selectors must be inside of LANGUAGE tag. The library finds all LANGUAG
         <input placeholder="en or fi">
 	</language>
 ```
+Language selector tag can have following data attributes:
+- data-select_opacity = "0.0" - "1.0" (opacity value of selected language flag)
 
 # How to Get Images of Language Flag
 You can get png and svg images for most languages from [Google region-flags project](https://github.com/googlei18n/region-flags "Google region flag project"). Use them and design your own language UI.
