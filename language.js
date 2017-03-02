@@ -23,7 +23,7 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 //
-// Version 0.8
+// Version 1.0
 //
 
 var languageSelector = {
@@ -55,6 +55,7 @@ var languageSelector = {
         languageSelector.elementOfScript = document.getElementById(languageSelector.idOfScript);
         // Read in debug status
         languageSelector.debugMode = (typeof languageSelector.elementOfScript.dataset.debug == 'string' && languageSelector.elementOfScript.dataset.debug == "1" ? true : false);
+        languageSelector.opacityValueOfSelectedLanguageElement = (typeof languageSelector.elementOfScript.dataset.select_opacity == 'string' ? languageSelector.elementOfScript.dataset.select_opacity : "1");
         languageSelector.log("languageSelector: Started");
         // Read in all possible languages from script data-languages
         var langListStr = (typeof languageSelector.elementOfScript.dataset.languages == 'string' ? languageSelector.elementOfScript.dataset.languages : '');
