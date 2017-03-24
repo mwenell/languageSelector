@@ -23,7 +23,7 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 //
-// Version 1.0
+// Version 1.1
 //
 
 var languageSelector = {
@@ -31,6 +31,8 @@ var languageSelector = {
     nameOfSelectorFrame: 'LANGUAGE', // Name of the language selector frame element
     idOfScript: 'language_script', // ID of the script element
     opacityValueOfSelectedLanguageElement: "0.5", // Opacity value for selected language selector element
+    
+    styleId: 'languageSelectorStyle',
     
     // null = no language selector | frame element of selectors
     frameElementsOfSelectorFlags: null,
@@ -181,13 +183,60 @@ var languageSelector = {
         if(typeof Storage !== 'undefined') {
             localStorage.setItem('language', lang);
         }
-        document.body.insertBefore(languageSelector.getStyleElement(languageSelector.lang), languageSelector.elementOfScript);
-        languageSelector.setSelector();
+        if(languageSelector.redirectHrefLang(lang)){
+            // NOPE
+        } else {
+            document.body.insertBefore(languageSelector.getStyleElement(languageSelector.lang), languageSelector.elementOfScript);
+            languageSelector.setSelector();
+        }
         languageSelector.log('languageSelector: Set language ' + lang + ' on');
     },
     
     //
-    //  setSelector() view the selected language selectors as selected
+    // redirectHrefLang(lang) change the current page to new page with selected language based on hreflang tags
+    //
+    
+    redirectHrefLang: function (lang){
+        var heads = document.getElementsByTagName('head');
+        if(typeof heads[0] == 'undefined'){
+            languageSelector.log('LanguageSelector: No head element found on page');
+            return false;
+        }
+
+        var hrefLangTags = heads[0].getElementsByTagName('link');
+        console.log(hrefLangTags);
+        if(!hrefLangTags || hrefLangTags.length == 0){
+            languageSelector.log('LanguageSelector: No Link element with hreflang found on the page head.');
+            return false;
+        }
+        
+        var hrefLangURL = '';
+        var baseURLLen = window.location.href.indexOf("?");
+        if(baseURLLen < 0) baseURLLen = window.location.href.length;
+        var actualBaseURL = window.location.href.substring(0, baseURLLen);
+        // Find all hreflang metadata
+        languageSelector.log('LanguageSelector: Has found folowing link elements in head with hrefLang:');
+        for (var i = 0; i < hrefLangTags.length; i++){
+            languageSelector.log('LanguageSelector: Link ' + (i + 1) + ' : hreflang = ' + hrefLangTags[i].hreflang);
+            if(hrefLangTags[i].hreflang == lang || hrefLangTags[i].hreflang.substring(0,lang.length) == lang){
+                // hreflang is matching
+                hrefLangURL = hrefLangTags[i].href;
+                console.log(actualBaseURL + ' == ' + hrefLangURL);
+                if(actualBaseURL != hrefLangURL){
+                    // The language page has been found, open it
+                    languageSelector.log('LanguageSelector: Language match found: hreflang = ' + hrefLangTags[i].hreflang + ' href = ' + hrefLangTags[i].href);
+                    console.log(hrefLangURL + window.location.search);
+                    window.location.href = hrefLangURL + window.location.search;
+                    return true;
+                }
+            }
+        }
+        languageSelector.log('LanguageSelector: No hreflang found.');
+        return false;
+    },
+    
+    //
+    //  setSelector() views the selected language selectors as selected
     //
     
     setSelector: function() {

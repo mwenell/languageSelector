@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="alternate" href="example-hreflang-en.html" hreflang="en">
+    <link rel="alternate" href="example-hreflang-fi.html" hreflang="fi">
+    
+	<style>
+		.languageFrameClick, .languageFrameSelect, .languageFrameInput, .textFrame, .textSupportTestFrame {
+            width: 100%;
+            text-align: center;
+            background-color: transparent;
+            margin-top: 50px;
+		}
+        
+        .textFrame {
+            width: 50%;
+            font-size: 24px;
+            color: black;
+            border: 1px solid black;
+            padding: 20px;
+            text-align: center;
+            margin: 50px 25% auto 25%;
+        }
+        
+        .textSupportTestFrame {
+            width: 50%;
+            min-width: 350px;
+            font-size: 24px;
+            color: black;
+            border: 1px solid black;
+            padding: 20px;
+            text-align: center;
+            margin: 50px 25% auto 25%;
+        }
+        
+        .textFrame>p {
+            margin: 0px;
+        }
+        
+        .textSupportTestFrame button {
+            font-size: 24px;
+            margin: 20px;
+        }
+        
+		.langFlag {
+            margin: 0px 5px 0px 5px;
+			border: 1px solid black;
+		}
+		
+        language {
+            display: block;
+        }
+	</style>
+
+</head>
+<body>
+    <script id="language_script" data-languages="en,fi,sv" data-debug="1" src="language.js?t=2"></script>
+
+	<language class="languageFrameClick">
+		<img lang="en" class="langFlag" src="img/en.png">
+		<img lang="fi" class="langFlag" src="img/fi.png">
+	</language>
+
+    <language class="languageFrameSelect">
+        <select>
+            <option value="en">English</option>fi>
+            <option value="fi">Suomi/Finnish</option>fi>
+        </select>
+	</language>
+
+	<div class="textFrame">
+        <p lang="en" class="placeHeadline">English Translation.</p>
+    </div>
+
+    <script>
+        var testURL = "https://www.surveygizmo.com/s3/3374527/browser-support-test?version=0.8";
+    </script>
+    
+    <div lang="en" class="textSupportTestFrame">
+        <p class="placeHeadline">We need your help!</p>
+        <p style="text-align: left;">Help us test how language selector works with your browser.</p>
+        <ol style="text-align: left;">
+            <li>test language selector in this page</li>
+            <li>tell us if it worked or not</li>
+            <li>see all test results in Google Sheet</li>
+        </ol>
+        <button onclick="location.href=testURL;">Report if yhe language selector works?</button>
+    </div>
+</body>
+</html>
