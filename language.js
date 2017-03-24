@@ -23,7 +23,7 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 //
-// Version 1.1
+// Version 1.2
 //
 
 var languageSelector = {
@@ -31,6 +31,9 @@ var languageSelector = {
     nameOfSelectorFrame: 'LANGUAGE', // Name of the language selector frame element
     idOfScript: 'language_script', // ID of the script element
     opacityValueOfSelectedLanguageElement: "0.5", // Opacity value for selected language selector element
+    
+    cookieKeyName: 'languageSelectorValue',
+    cookieExpirationDays: 3650,
     
     styleId: 'languageSelectorStyle',
     
@@ -172,7 +175,7 @@ var languageSelector = {
     
     
     //
-    // setLanguage(lang) select new language and store the language value in localstorage
+    // setLanguage(lang) select new language and store the language value in cookies
     //
     
     setLanguage: function(lang, refresh){
@@ -180,9 +183,7 @@ var languageSelector = {
         refresh = refresh || false;
         if(lang == '' || (lang == languageSelector.actualLanguage && !refresh)) return; // Already selected or unsupported language
         languageSelector.actualLanguage = lang;
-        if(typeof Storage !== 'undefined') {
-            localStorage.setItem('language', lang);
-        }
+        setCookie(languageSelector.cookieKeyName, lang, languageSelector.cookieExpirationDays);
         if(languageSelector.redirectHrefLang(lang)){
             // NOPE
         } else {
@@ -300,14 +301,14 @@ var languageSelector = {
     
     
     //
-    // getLang() reads the language from a) localstorage (user has selected before), b) supported language selected in browser or c) default language
+    // getLang() reads the language from a) cookie (user has selected before), b) supported language selected in browser or c) default language
     //
     
     getLang: function(){
         if(languageSelector.actualLanguage != null) return languageSelector.actualLanguage;
         var lang = null;
         if(typeof Storage !== 'undefined') {
-            lang = localStorage.getItem('language');
+            lang = getCookie(languageSelector.cookieKeyName);
         }
         if(typeof lang != 'string') {
             // Try user's preferred languages
@@ -374,4 +375,43 @@ var languageSelector = {
         if(languageSelector.debugMode) console.log(msg);
     }
 }
+
+//
+// Cookie management functions
+//
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie() {
+    var user = getCookie("username");
+    if (user != "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie("username", user, 365);
+        }
+    }
+}
+
 languageSelector.init();

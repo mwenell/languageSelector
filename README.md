@@ -27,7 +27,8 @@ Test the language selector:
 - Does not yet create dynamic HTML code of language selector flags, this must be done by yourself
 
 # Installation
-- Insert language.js into "language" folder in your website
+- Create language folder in your your website
+- Copy all files into the folder
 - Add following tag in your HTML code as first child of body tag:
 ```
 <script 
