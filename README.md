@@ -24,6 +24,9 @@ Test the language selector:
 - Use as many languages as you wish
 - Limitations: When you are using this library, do not use :lang() selector in your CSS
 
+# Known bugs
+- Click on language flag image does not update the selected language in select element
+
 # Installation
 - Create language folder in your your website
 - Copy all files into the folder
