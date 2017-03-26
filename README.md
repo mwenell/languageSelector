@@ -10,7 +10,7 @@ There are two way to use it:
 
 # Test
 Test the language selector:
-- [Inline HTML](https://kommentit.fi/language/example-hreflang-en.html "Example.html page") 
+- [hreflang example](https://kommentit.fi/language/example-hreflang-en.html "Example.html page") 
 - [Inline HTML](https://kommentit.fi/language/example.html "Example-inline-translations.html page") 
 
 # Features
