@@ -109,10 +109,28 @@ Notice: If you use lang property in html element, it will be showed only when th
 4. Use the default language of the page (first language code in the script tag)
 5. User clicks language selector and switch to new language
 
+# How to design flag image and select elements
+Use CSS to design flag images and select elements as you want. Use following CSS selector for flag images:
+```
+<style>
+   language img {
+      height: 100%;
+      /* insert your design here */
+   }
+</style>
+```
+Use following CSS selector for select elements:
+```
+<style>
+   language select {
+      /* insert your design here */
+   }
+</style>
+```
+
 # How the Correct Translation is Showed or Hided in inline translations
 The Javascript code generates as first child of body tag a "style" tag which includes CSS styles to show the selected language translations and hide unselected languages. Below is and example of the content of style tag. Do not insert this "style" tag into your HTML, Javascript creates it automatically.
 ```
-
 <style>
    :not(LANGUAGE)>:lang(fi) {display: none}
    :not(LANGUAGE)>:lang(sv) {display: none}
