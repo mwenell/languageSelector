@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <!-- Insert languageSelector CSS -->
+    <link rel="stylesheet" href="language.css">
     
 	<style>
 		.languageFrameClick, .languageFrameSelect, .languageFrameInput, .textFrame, .textSupportTestFrame {
@@ -41,48 +45,35 @@
             font-size: 24px;
             margin: 20px;
         }
-        
-		.langFlag {
-            margin: 0px 5px 0px 5px;
-			border: 1px solid black;
-		}
 		
         language {
             display: block;
+            height: 30px;
+        }
+        
+        button {
+            cursor: pointer;
         }
 	</style>
 
 </head>
 <body>
-    <script id="language_script" data-languages="en,fi,sv" data-debug="1" src="language.js?t=2"></script>
+    <script id="language_script" data-languages="en,fi" data-debug="1" src="language.js"></script>
 
-	<language class="languageFrameClick">
-		<img lang="en" class="langFlag" src="img/en.png">
-		<img lang="fi" class="langFlag" src="img/fi.png">
-		<img lang="sv" class="langFlag" src="img/sv.png">
+	<language class="languageFrameClick" data-type="flag">
 	</language>
 
-    <language class="languageFrameSelect">
-        <select>
-            <option value="en">English</option>fi>
-            <option value="fi">Suomi/Finnish</option>fi>
-            <option value="sv">Svenska/Swedish</option>fi>
-        </select>
-	</language>
-
-    <language class="languageFrameInput">
-        <input placeholder="en or fi or sv">
+    <language class="languageFrameSelect" data-type="select">
 	</language>
 
     
 	<div class="textFrame">
         <p lang="fi" class="placeHeadline">Suomeksi.</p>
         <p lang="en" class="placeHeadline">English Translation.</p>
-        <p lang="sv" class="placeHeadline">På svenska.</p>
     </div>
 
     <script>
-        var testURL = "https://www.surveygizmo.com/s3/3374527/browser-support-test?version=0.8";
+        var testURL = "https://www.surveygizmo.com/s3/3374527/browser-support-test?version=" + languageSelector.version;
     </script>
     
     <div lang="fi" class="textSupportTestFrame">

@@ -7,6 +7,9 @@
     <link rel="alternate" href="example-hreflang-en.html" hreflang="en">
     <link rel="alternate" href="example-hreflang-fi.html" hreflang="fi">
     
+    <!-- Insert languageSelector CSS -->
+    <link rel="stylesheet" href="language.css">
+    
 	<style>
 		.languageFrameClick, .languageFrameSelect, .languageFrameInput, .textFrame, .textSupportTestFrame {
             width: 100%;
@@ -44,31 +47,25 @@
             font-size: 24px;
             margin: 20px;
         }
-        
-		.langFlag {
-            margin: 0px 5px 0px 5px;
-			border: 1px solid black;
-		}
 		
         language {
             display: block;
+            height: 30px;
+        }
+                        
+        button {
+            cursor: pointer;
         }
 	</style>
 
 </head>
 <body>
-    <script id="language_script" data-languages="en,fi,sv" data-debug="1" src="language.js?t=2"></script>
+    <script id="language_script" data-debug="1" src="language.js"></script>
 
-	<language class="languageFrameClick">
-		<img lang="en" class="langFlag" src="img/en.png">
-		<img lang="fi" class="langFlag" src="img/fi.png">
+	<language class="languageFrameClick" data-type="flag">
 	</language>
 
-    <language class="languageFrameSelect">
-        <select>
-            <option value="en">English</option>fi>
-            <option value="fi">Suomi/Finnish</option>fi>
-        </select>
+    <language class="languageFrameSelect" data-type="select">
 	</language>
 
 	<div class="textFrame">
@@ -76,7 +73,7 @@
     </div>
 
     <script>
-        var testURL = "https://www.surveygizmo.com/s3/3374527/browser-support-test?version=0.8";
+        var testURL = "https://www.surveygizmo.com/s3/3374527/browser-support-test?version=" + languageSelector.version;
     </script>
     
     <div lang="en" class="textSupportTestFrame">

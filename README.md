@@ -15,6 +15,7 @@ Test the language selector:
 
 # Features
 - Switchs between languages by clicking language images or by selecting language in drop-down list
+- Create automatically flags of language select
 - Selects automatically user's preferred language in browser
 - Supports both lang property use in HTML inline translations and hreflang property use in multifile translations (each language translation has own URL as e.g. example.com/en/xyz.html or example.com/xyz-en.html or en.example.com)
 - Insert one script tag and you have language support in your page
@@ -22,9 +23,6 @@ Test the language selector:
 - Add "LANGUAGE" HTML tag in your page and insert your language flags in it
 - Use as many languages as you wish
 - Limitations: When you are using this library, do not use :lang() selector in your CSS
-
-# Missing Features
-- Does not yet create dynamic HTML code of language selector flags, this must be done by yourself
 
 # Installation
 - Create language folder in your your website
@@ -39,15 +37,21 @@ Test the language selector:
 </script>
 ```
 Where
-- id="language_script" must have value "language_script"
-- data-languages="[LANGUAGE LIST]" is a list of all supported languages separated by ",", e.g. data-languages="en,fi,sv". The first language is the default language of the page. Notice: You must have text version of all language depended elements for each languages
-- data-debug="[1|0]" will activate in debug mode logging to console, data-debug="1" will activate debug logging
-- src="/language/language.js" is the URL to the javascript library file. Notice: This library needs only this one language.js file to be included as first child of body tag. Do not add this line at the end of body or middle.
+- id = "language_script" must have value "language_script"
+- data-languages = "[LANGUAGE LIST]" is a list of all supported languages separated by ",", e.g. data-languages="en,fi,sv". The first language is the default language of the page. Notice: You must have text version of all language depended elements for each languages
+- data-debug = "[1|0]" will activate in debug mode logging to console, data-debug="1" will activate debug logging
+- src = "/language/language.js" is the URL to the javascript library file. Notice: This library needs only this one language.js file to be included as first child of body tag. Do not add this line at the end of body or middle.
 
-- Insert language selector tag as "LANGUAGE" tag  (see below how)
+- Insert language.css in your head as follows:
+```
+<link rel="stylesheet" href="PATH_TO_LANGUGA_SELECTOR/language.css">
+```
+
+- Insert language selector tag as "LANGUAGE" tag  (see later how)
 - You have two options to do translations:
    - Translate your content in separate URLs and mark them with standard hreflang at head of each page's DOM
    - Translate your content by using "lang" attribute in your HTML code (see below how)
+- NOTICE: If you use the library by git clone, you have to remember to update flag submodule (region-flags) to get flags to your computer. If you download latest version as zip file, you do not have to do this.
 
 # Language Selector Tag
 Language selector tag is the HTML element which user clicks or selects whe s/he wants to change the language. It can be an image of language flag, text or almost any kind of visual element.
@@ -58,28 +62,14 @@ The library supports following HTML elements:
 
 Language selectors must be inside of LANGUAGE tag. The library finds all LANGUAGE tags automatically and expects that all HTML elements inside the tag are language selectors. See example code below.
 ```
-	<language class="languageFrameClick">
-		<img lang="fi" class="langFlag" id="fi" src="img/fi.png">
-		<img lang="en" class="langFlag" id="en" src="img/en.png">
+	<language data-type="flag">
 	</language>
 
-    <language class="languageFrameSelect">
-        <select>
-            <option value="">Language/Kieli/Språk</option>
-            <option value="en">English</option>fi>
-            <option value="fi">Suomi/Finnish</option>fi>
-        </select>
-	</language>
-
-    <language class="languageFrameInput">
-        <input placeholder="en or fi">
+    <language data-type="select">
 	</language>
 ```
-Language selector tag can have following data attributes:
-- data-select_opacity = "0.0" - "1.0" (opacity value of selected language flag)
-
-# How to Get Images of Language Flag
-You can get png and svg images for most languages from [Google region-flags project](https://github.com/googlei18n/region-flags "Google region flag project"). Use them and design your own language UI.
+Where
+- data-type = flag (flag images) | select (select element)
 
 # Tranlations on Language Specific URLs (Use of hreflang at head of DOM)
 Implement your translations in language specific URLs (html files) and mark in each HTML file what is the correct URL for it's tranlations in different languages. Remember to include the actual language and files own URL as well.
@@ -179,6 +169,10 @@ function languageChangeCallback(newLang, element){
    }
 }
 ```
+
+# How to use languageSelector with server side code
+Selected language is stored on clientside in cookie which name is "languageSelectorValue". Use it to create page content with correct language.
+
 # Learn More
 - Learn more about hreflang at W3C](https://www.w3.org/International/questions/qa-css-lang "W3C: Styling using language attributes")
 - Learn more about styling with languases at [W3C](https://www.w3.org/International/questions/qa-css-lang "W3C: Styling using language attributes")
