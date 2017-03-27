@@ -24,6 +24,11 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 */
 
+language {
+    display: block;
+    height: 30px;
+}
+
 language img {
     height: 100%;
     border: 1px solid black;

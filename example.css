@@ -1,0 +1,40 @@
+		.languageFrameClick, .languageFrameSelect, .languageFrameInput, .textFrame, .textSupportTestFrame {
+            width: 100%;
+            text-align: center;
+            background-color: transparent;
+            margin-top: 50px;
+		}
+        
+        .textFrame {
+            width: 50%;
+            font-size: 24px;
+            color: black;
+            border: 1px solid black;
+            padding: 20px;
+            text-align: center;
+            margin: 50px 25% auto 25%;
+        }
+        
+        .textSupportTestFrame {
+            width: 50%;
+            min-width: 350px;
+            font-size: 24px;
+            color: black;
+            border: 1px solid black;
+            padding: 20px;
+            text-align: center;
+            margin: 50px 25% auto 25%;
+        }
+        
+        .textFrame>p {
+            margin: 0px;
+        }
+        
+        .textSupportTestFrame button {
+            font-size: 24px;
+            margin: 20px;
+        }
+        
+        button {
+            cursor: pointer;
+        }

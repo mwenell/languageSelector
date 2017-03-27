@@ -23,7 +23,7 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 var languageSelector = {
-    version: '1.3.3',
+    version: '1.3.4',
     defaultLanguage: 'en', // Default language if no language available
     nameOfSelectorFrame: 'LANGUAGE', // Name of the language selector frame element
     idOfScript: 'language_script', // ID of the script element
