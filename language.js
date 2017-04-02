@@ -23,7 +23,7 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 var languageSelector = {
-    version: '1.3.4',
+    version: '1.3.5',
     defaultLanguage: 'en', // Default language if no language available
     nameOfSelectorFrame: 'LANGUAGE', // Name of the language selector frame element
     idOfScript: 'language_script', // ID of the script element
@@ -434,7 +434,7 @@ var languageSelector = {
                     // The language page has been found, open it
                     languageSelector.log('LanguageSelector: Language match found: hreflang = ' + hrefLangTags[i].hreflang + ' href = ' + hrefLangTags[i].href);
                     console.log(hrefLangURL + window.location.search);
-                    window.location.href = hrefLangURL + window.location.search;
+                    window.location.replace (hrefLangURL + window.location.search);
                     return true;
                 }
             }
