@@ -23,7 +23,7 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 var languageSelector = {
-    version: '1.3.5',
+    version: '1.3.6',
     defaultLanguage: 'en', // Default language if no language available
     nameOfSelectorFrame: 'LANGUAGE', // Name of the language selector frame element
     idOfScript: 'language_script', // ID of the script element
@@ -388,7 +388,6 @@ var languageSelector = {
         
         if(lang == '' || (lang == languageSelector.actualLanguage && !refresh)) return; // Already selected or unsupported language
         languageSelector.actualLanguage = lang;
-        console.log('new cookie lang = ' + lang);
         setCookie(languageSelector.cookieKeyName, lang, languageSelector.cookieExpirationDays);
         if(languageSelector.redirectHrefLang(lang)){
             // NOPE
@@ -412,7 +411,6 @@ var languageSelector = {
         }
 
         var hrefLangTags = heads[0].getElementsByTagName('link');
-        console.log(hrefLangTags);
         if(!hrefLangTags || hrefLangTags.length == 0){
             languageSelector.log('LanguageSelector: No Link element with hreflang found on the page head.');
             return false;
@@ -429,11 +427,9 @@ var languageSelector = {
             if(hrefLangTags[i].hreflang == lang || hrefLangTags[i].hreflang.substring(0,lang.length) == lang){
                 // hreflang is matching
                 hrefLangURL = hrefLangTags[i].href;
-                console.log(actualBaseURL + ' == ' + hrefLangURL);
                 if(actualBaseURL != hrefLangURL){
                     // The language page has been found, open it
                     languageSelector.log('LanguageSelector: Language match found: hreflang = ' + hrefLangTags[i].hreflang + ' href = ' + hrefLangTags[i].href);
-                    console.log(hrefLangURL + window.location.search);
                     window.location.replace (hrefLangURL + window.location.search);
                     return true;
                 }
@@ -478,34 +474,27 @@ var languageSelector = {
     //
     
     setSelector: function() {
-        console.log(1);
         if(languageSelector.elementsOfLanguageSelectors != null && languageSelector.elementsOfLanguageSelectors.length > 0){
-            console.log(2);
             for(var c = 0; c < languageSelector.elementsOfLanguageSelectors.length; c++){
-                console.log(3);
                 if(typeof languageSelector.elementsOfLanguageSelectors[c].tagName == 'string'){
                     switch(languageSelector.elementsOfLanguageSelectors[c].tagName){
                         case 'SELECT':
                                 languageSelector.elementsOfLanguageSelectors[c].value = languageSelector.actualLanguage;
                             break;
                         case 'IMG':
-                            console.log(4);
                             languageSelector.elementsOfLanguageSelectors[c].className = languageSelector.elementsOfLanguageSelectors[c].className.replace(/\ selected/g, '');
                             if(languageSelector.elementsOfLanguageSelectors[c].getAttribute('lang') == languageSelector.actualLanguage){
-                                console.log(5);
                                 // The element is the selected language element
                                 try {
                                 languageSelector.elementsOfLanguageSelectors[c].className += ' selected';
                                 } catch(e) {
                                     // NOPE
-                                    console.log(6);
                                 }
                             } else {
                                 try {
                                 languageSelector.elementsOfLanguageSelectors[c].style.opacity = "1";
                                 } catch(e) {
                                     // NOPE
-                                    console.log(7);
                                 }                                
                             }
                             break;
@@ -592,7 +581,6 @@ var languageSelector = {
     
     isSupportedLanguage: function(lang){
         lang = languageSelector.validateISO6391(lang);
-        console.log('lang = ' + lang);
         if(typeof languageSelector.languageList[lang] != 'undefined') return lang;
         languageSelector.log('languageSelector warning: Found unsupported language selector in use (' + lang + ')');
         return false;
