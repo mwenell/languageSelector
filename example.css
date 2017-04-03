@@ -1,4 +1,4 @@
-		.languageFrameClick, .languageFrameSelect, .languageFrameInput, .textFrame, .textSupportTestFrame {
+		.languageFrameClick, .languageFrameSelect, .languageFrameInput {
             width: 100%;
             text-align: center;
             background-color: transparent;
@@ -6,24 +6,23 @@
 		}
         
         .textFrame {
-            width: 50%;
+            width: 70%;
             font-size: 24px;
             color: black;
             border: 1px solid black;
-            padding: 20px;
+            padding: 5%;
             text-align: center;
-            margin: 50px 25% auto 25%;
+            margin: 5% 5% auto 5%;
         }
         
         .textSupportTestFrame {
-            width: 50%;
-            min-width: 350px;
+            width: 70%;
             font-size: 24px;
             color: black;
             border: 1px solid black;
-            padding: 20px;
+            padding: 5%;
             text-align: center;
-            margin: 50px 25% auto 25%;
+            margin: 5% 5% auto 5%;
         }
         
         .textFrame>p {

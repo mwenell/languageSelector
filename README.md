@@ -4,7 +4,7 @@ It is useful on multilanguage HTML pages which are using HTML lang property or h
 
 ![Example Screenshot](https://kommentit.fi/language/img/screenshot.png "Example Screenshot")
 
-There are two way to use it:
+There are two ways to use it:
 - Define hreflang tag and URL for each language version of the page at head of DOM (recommended)
 - Inline HTML by using lang properties in HTML elements
 
@@ -14,11 +14,11 @@ Test the language selector:
 - [Inline HTML](https://kommentit.fi/language/example.html "Example-inline-translations.html page") 
 
 # Features
+- Insert one script tag and you have language support in your page
 - Switchs between languages by clicking language images or by selecting language in drop-down list
 - Create automatically flags of language select
-- Selects automatically user's preferred language in browser
-- Supports both lang property use in HTML inline translations and hreflang property use in multifile translations (each language translation has own URL as e.g. example.com/en/xyz.html or example.com/xyz-en.html or en.example.com)
-- Insert one script tag and you have language support in your page
+- Selects automatically the language which user has preferred in browser his/her browser preferencies
+- Supports both use of lang property in HTML inline translations and use of hreflang property in multifile translations (each language translation has own URL as e.g. example.com/en/xyz.html or example.com/xyz-en.html or en.example.com)
 - No Javascript coding, HTML is all you need to manage
 - Add "LANGUAGE" HTML tag in your page and insert your language flags in it
 - Use as many languages as you wish
@@ -30,7 +30,7 @@ Test the language selector:
 # Installation
 - Create language folder in your your website
 - Copy all files into the folder
-- Add following tag in your HTML code as first child of body tag:
+- Add following tag in your HTML code as first child of body tag or inside head element:
 ```
 <script 
    id="language_script" 
@@ -132,7 +132,7 @@ Use following CSS selector for select elements:
 ```
 
 # How the Correct Translation is Showed or Hided in inline translations
-The Javascript code generates as first child of body tag a "style" tag which includes CSS styles to show the selected language translations and hide unselected languages. Below is and example of the content of style tag. Do not insert this "style" tag into your HTML, Javascript creates it automatically.
+The Javascript code generates as first child of head tag a "style" tag which includes CSS styles to show the selected language translations and hide unselected languages. Below is and example of the content of style tag. Do not insert this "style" tag into your HTML, Javascript creates it automatically.
 ```
 <style>
    :not(LANGUAGE)>:lang(fi) {display: none}

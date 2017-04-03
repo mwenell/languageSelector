@@ -23,7 +23,7 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 var languageSelector = {
-    version: '1.3.6',
+    version: '1.3.7',
     defaultLanguage: 'en', // Default language if no language available
     nameOfSelectorFrame: 'LANGUAGE', // Name of the language selector frame element
     idOfScript: 'language_script', // ID of the script element
@@ -393,7 +393,14 @@ var languageSelector = {
             // NOPE
         } else {
             document.documentElement.lang = '';
-            document.body.insertBefore(languageSelector.getStyleElement(languageSelector.lang), languageSelector.elementOfScript);
+            var heads = document.getElementsByTagName('head');
+            if(typeof heads[0] != 'undefined'){
+                var head = heads[0];
+                head.appendChild(languageSelector.getStyleElement(languageSelector.lang));
+                languageSelector.log('languageSelector: Language <style> has been inserted in <head>');
+            } else {
+                languageSelector.log('languageSelector: ERROR: No <head> available, cannot select language.');
+            }
             languageSelector.setSelector();
         }
         languageSelector.log('languageSelector: Set language ' + lang + ' on');
@@ -527,6 +534,7 @@ var languageSelector = {
                     styleString += languageSelector.nameOfSelectorFrame + '>:lang(' + languageSelector.languageArray[c] + ') {cursor: default;} ';
                 }
             }
+            returnValue.setAttribute('type', 'text/css');
             returnValue.innerHTML = styleString;
         }
         return returnValue;
