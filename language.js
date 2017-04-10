@@ -328,7 +328,7 @@ var languageSelector = {
     // insertSelectOption(languageTag, language) function inserts language option in SELECT elements in LANGUAGE tag
     //
     
-    insertSelectOption(languageTag, language){
+    insertSelectOption: function(languageTag, language){
         if(languageTag && typeof language == 'string'){
             var lang = languageSelector.validateISO6391(language);
             if(lang && typeof languageSelector.elementOfScript.src == 'string'){
