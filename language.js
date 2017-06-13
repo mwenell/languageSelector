@@ -374,7 +374,7 @@ var languageSelector = {
     changeLanguageSelect: function(el){
         if(typeof this.options[this.selectedIndex].value == 'string'){
             languageSelector.setLanguage(this.options[this.selectedIndex].value);
-            if(typeof languageChangeCallback == 'function') languageChangeCallback(newLang, this);
+            if(typeof languageChangeCallback == 'function') languageChangeCallback(this.options[this.selectedIndex].value, this);
         }
     },
     
