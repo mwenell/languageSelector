@@ -34,44 +34,18 @@ Test the language selector:
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="alternate" href="example-hreflang-en.html" hreflang="en">
+    	<link rel="alternate" href="example-hreflang-fi.html" hreflang="fi">
     
-    <link rel="alternate" href="example-hreflang-en.html" hreflang="en">
-    <link rel="alternate" href="example-hreflang-fi.html" hreflang="fi">
-    
-    <!-- Insert languageSelector CSS -->
-    <link rel="stylesheet" href="language.css">
-    
-    <!-- CSS of this example page -->
-    <link rel="stylesheet" href="example.css">
-
+    	<!-- Insert languageSelector CSS -->
+    	<link rel="stylesheet" href="language.css">
 </head>
 <body>
-    <script id="language_script" data-debug="1" src="language.js"></script>
+	<!-- Remove data-debug parameter in production version -->
+	<script id="language_script" data-debug="1" src="language/language.js"></script>
+	<language class="languageFrameClick" data-type="flag"></language>
 
-	<language class="languageFrameClick" data-type="flag">
-	</language>
-
-    <language class="languageFrameSelect" data-type="select">
-	</language>
-
-	<div class="textFrame">
-        <p lang="en" class="placeHeadline">English Translation.</p>
-    </div>
-
-    <script>
-        var testURL = "https://www.surveygizmo.com/s3/3374527/browser-support-test?version=" + languageSelector.version;
-    </script>
-    
-    <div lang="en" class="textSupportTestFrame">
-        <p class="placeHeadline">We need your help!</p>
-        <p style="text-align: left;">Help us test how language selector works with your browser.</p>
-        <ol style="text-align: left;">
-            <li>test language selector in this page</li>
-            <li>tell us if it worked or not</li>
-            <li>see all test results in Google Sheet</li>
-        </ol>
-        <button onclick="location.href=testURL;">Report if the language selector works?</button>
-    </div>
+	<p lang="en" class="placeHeadline">You English Translation.</p>
 </body>
 </html>
 ```
