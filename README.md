@@ -11,7 +11,7 @@ There are two ways to use it:
 # Test
 Test the language selector:
 - [hreflang example](https://kommentit.fi/language/example-hreflang-en.html "Example.html page") 
-- [Inline HTML](https://kommentit.fi/language/example.html "Example-inline-translations.html page") 
+- [Inline HTML](https://kommentit.fi/language/example-inline-translations.html "Example-inline-translations.html page") 
 
 # Features
 - Insert one script tag and you have language support in your page
