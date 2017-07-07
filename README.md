@@ -37,7 +37,7 @@ Below is an example HTML code when using inline lang() parameter in translations
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     
     	<!-- Insert languageSelector CSS -->
-    	<link rel="stylesheet" href="language.css">
+    	<link rel="stylesheet" href="language/language.css">
 </head>
 <body>
 	<!-- Remove data-debug parameter in production version -->
@@ -62,7 +62,7 @@ Below is an example HTML code when using [hreflang](https://www.w3.org/Internati
     	<link rel="alternate" href="example-hreflang-fi.html" hreflang="fi">
     
     	<!-- Insert languageSelector CSS -->
-    	<link rel="stylesheet" href="language.css">
+    	<link rel="stylesheet" href="language/language.css">
 </head>
 <body>
 	<!-- Remove data-debug parameter in production version -->
