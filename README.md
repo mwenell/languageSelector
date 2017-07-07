@@ -42,7 +42,7 @@ Below is an example HTML code when using inline lang() parameter in translations
 <body>
 	<!-- Remove data-debug parameter in production version -->
 	<script id="language_script" data-languages="en,sv,fi" data-debug="1" src="language/language.js"></script>
-	<language class="languageFrameClick" data-type="flag"></language>
+	<language data-type="flag"></language>
 
 	<p lang="en" class="placeHeadline">Your English Translation.</p>
 	<p lang="sv" class="placeHeadline">Samma på svenska.</p>
@@ -67,7 +67,7 @@ Below is an example HTML code when using [hreflang](https://www.w3.org/Internati
 <body>
 	<!-- Remove data-debug parameter in production version -->
 	<script id="language_script" data-debug="1" src="language/language.js"></script>
-	<language class="languageFrameClick" data-type="flag"></language>
+	<language data-type="flag"></language>
 
 	<p class="placeHeadline">Your English Translation.</p>
 </body>
