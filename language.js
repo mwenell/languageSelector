@@ -528,7 +528,7 @@ var languageSelector = {
             if(languageSelector.actualLanguage == null) languageSelector.getLang();
             for(var c = 0; c < languageSelector.languageArray.length; c++){
                 if(languageSelector.actualLanguage != languageSelector.languageArray[c]){
-                    styleString += ':not(' + languageSelector.nameOfSelectorFrame + ')>:lang(' + languageSelector.languageArray[c] + ') {display: none;} ';
+                    styleString += ':not(' + languageSelector.nameOfSelectorFrame + ')>:lang(' + languageSelector.languageArray[c] + ') {display: none!important;} ';
                     styleString += languageSelector.nameOfSelectorFrame + '>:lang(' + languageSelector.languageArray[c] + ') {cursor: pointer;} ';
                 } else {
                     styleString += languageSelector.nameOfSelectorFrame + '>:lang(' + languageSelector.languageArray[c] + ') {cursor: default;} ';
