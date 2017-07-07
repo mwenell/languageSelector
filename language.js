@@ -23,11 +23,11 @@
 // Source code and documentation: https://github.com/mwenell/languageSelector
 
 var languageSelector = {
-    version: '1.3.9',
+    version: '1.4.0',
     defaultLanguage: 'en', // Default language if no language available
     nameOfSelectorFrame: 'LANGUAGE', // Name of the language selector frame element
     idOfScript: 'language_script', // ID of the script element
-    flagPath: 'region-flags/png/', // Where are the flag images as EN.png
+    flagPath: 'flags/', // Where are the flag images as EN.png
     
     cookieKeyName: 'languageSelectorValue', // Cookie name for selected language
     cookieExpirationDays: 3650,
