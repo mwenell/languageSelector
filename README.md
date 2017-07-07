@@ -28,6 +28,30 @@ Test the language selector:
 - Click on language flag image does not update the selected language in dropdown select element of language
 
 # Example HTML Code
+Below is an example HTML code when using inline lang() parameter in translations.
+```
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    	<!-- Insert languageSelector CSS -->
+    	<link rel="stylesheet" href="language.css">
+</head>
+<body>
+	<!-- Remove data-debug parameter in production version -->
+	<script id="language_script" data-languages="en,sv,fi" data-debug="1" src="language/language.js"></script>
+	<language class="languageFrameClick" data-type="flag"></language>
+
+	<p lang="en" class="placeHeadline">Your English Translation.</p>
+	<p lang="sv" class="placeHeadline">Samma på svenska.</p>
+	<p lang="fi" class="placeHeadline">Sama suomeksi.</p>
+</body>
+</html>
+```
+
+Below is an example HTML code when using [hreflang](https://www.w3.org/International/questions/qa-css-lang "W3C: Styling using language attributes"). Notice: Google recommends using hreflang instead of lang() parameter.
 ```
 <!DOCTYPE html>
 <html>
@@ -45,7 +69,7 @@ Test the language selector:
 	<script id="language_script" data-debug="1" src="language/language.js"></script>
 	<language class="languageFrameClick" data-type="flag"></language>
 
-	<p lang="en" class="placeHeadline">You English Translation.</p>
+	<p class="placeHeadline">Your English Translation.</p>
 </body>
 </html>
 ```
@@ -217,7 +241,7 @@ function languageChangeCallback(newLang, element){
 Selected language is stored on clientside in cookie which name is "languageSelectorValue". Use it to create page content with correct language.
 
 # Learn More
-- Learn more about hreflang at W3C](https://www.w3.org/International/questions/qa-css-lang "W3C: Styling using language attributes")
+- Learn more about hreflang at [W3C](https://www.w3.org/International/questions/qa-css-lang "W3C: Styling using language attributes")
 - Learn more about styling with languases at [W3C](https://www.w3.org/International/questions/qa-css-lang "W3C: Styling using language attributes")
 - Learn more about [:lang()](https://developer.mozilla.org/en-US/docs/Web/CSS/:lang "Mozilla Developer Network: :lang") CSS selector
 - HTML uses [HTML ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes "W3C: HTML Language Code Reference") language codes
