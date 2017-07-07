@@ -20,12 +20,61 @@ Test the language selector:
 - Selects automatically the language which user has preferred in browser his/her browser preferencies
 - Supports both use of lang property in HTML inline translations and use of hreflang property in multifile translations (each language translation has own URL as e.g. example.com/en/xyz.html or example.com/xyz-en.html or en.example.com)
 - No Javascript coding, HTML is all you need to manage
-- Add "LANGUAGE" HTML tag in your page and insert your language flags in it
-- Use as many languages as you wish
+- Add "LANGUAGE" HTML tag in your page and define what languages you support
+- Use as many languages as you wish, all major language flags are supported
 - Limitations: When you are using this library, do not use :lang() selector in your CSS
 
 # Known bugs
-- Click on language flag image does not update the selected language in select element
+- Click on language flag image does not update the selected language in dropdown select element of language
+
+# Example HTML Code
+```
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="alternate" href="example-hreflang-en.html" hreflang="en">
+    <link rel="alternate" href="example-hreflang-fi.html" hreflang="fi">
+    
+    <!-- Insert languageSelector CSS -->
+    <link rel="stylesheet" href="language.css">
+    
+    <!-- CSS of this example page -->
+    <link rel="stylesheet" href="example.css">
+
+</head>
+<body>
+    <script id="language_script" data-debug="1" src="language.js"></script>
+
+	<language class="languageFrameClick" data-type="flag">
+	</language>
+
+    <language class="languageFrameSelect" data-type="select">
+	</language>
+
+	<div class="textFrame">
+        <p lang="en" class="placeHeadline">English Translation.</p>
+    </div>
+
+    <script>
+        var testURL = "https://www.surveygizmo.com/s3/3374527/browser-support-test?version=" + languageSelector.version;
+    </script>
+    
+    <div lang="en" class="textSupportTestFrame">
+        <p class="placeHeadline">We need your help!</p>
+        <p style="text-align: left;">Help us test how language selector works with your browser.</p>
+        <ol style="text-align: left;">
+            <li>test language selector in this page</li>
+            <li>tell us if it worked or not</li>
+            <li>see all test results in Google Sheet</li>
+        </ol>
+        <button onclick="location.href=testURL;">Report if the language selector works?</button>
+    </div>
+</body>
+</html>
+```
 
 # Installation
 - Create language folder in your your website
@@ -50,11 +99,10 @@ Where
 <link rel="stylesheet" href="PATH_TO_LANGUGA_SELECTOR/language.css">
 ```
 
-- Insert language selector tag as "LANGUAGE" tag  (see later how)
+- Insert language selector tag as "LANGUAGE" HTML tag  (see later how) where you want to have it
 - You have two options to do translations:
    - Translate your content in separate URLs and mark them with standard hreflang at head of each page's DOM
    - Translate your content by using "lang" attribute in your HTML code (see below how)
-- NOTICE: If you use the library by git clone, you have to remember to update flag submodule (region-flags) to get flags to your computer. If you download latest version as zip file, you do not have to do this.
 
 # Language Selector Tag
 Language selector tag is the HTML element which user clicks or selects whe s/he wants to change the language. It can be an image of language flag, text or almost any kind of visual element.
