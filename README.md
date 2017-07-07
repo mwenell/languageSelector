@@ -2,7 +2,7 @@
 Language selector is a Javascript library which selects languages/translations on HTML pages by using :lang() selector or hreflang tag at head of DOM.
 It is useful on multilanguage HTML pages which are using HTML lang property or hreflang in translations.
 
-![Example Screenshot](https://kommentit.fi/language/img/screenshot.png "Example Screenshot")
+![Example Screenshot](https://raw.githubusercontent.com/mwenell/languageSelector/master/img/screenshot.png "Example Screenshot")
 
 There are two ways to use it:
 - Define hreflang tag and URL for each language version of the page at head of DOM (recommended)
