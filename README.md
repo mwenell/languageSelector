@@ -24,7 +24,7 @@ Test the language selector:
 - Use as many languages as you wish, all major language flags are supported
 - Limitations: When you are using this library, do not use :lang() selector in your CSS
 
-# Known bugs
+# Known Bugs
 - Click on language flag image does not update the selected language in dropdown select element of language
 
 # Example HTML Code
@@ -120,7 +120,7 @@ Language selectors must be inside of LANGUAGE tag. The library finds all LANGUAG
 Where
 - data-type = flag (flag images) | select (select element)
 
-# Tranlations on Language Specific URLs (Use of hreflang at head of DOM)
+# Tranlations on Language Specific URLs (Use of hreflang at Head of DOM)
 Implement your translations in language specific URLs (html files) and mark in each HTML file what is the correct URL for it's tranlations in different languages. Remember to include the actual language and files own URL as well.
 
 Use hreflang as in each of your HTML files to make translation linking to work correctly. See example below.
@@ -158,7 +158,7 @@ Notice: If you use lang property in html element, it will be showed only when th
 4. Use the default language of the page (first language code in the script tag)
 5. User clicks language selector and switch to new language
 
-# How to design flag image and select elements
+# How to Design Flag Image and Language Dropdown Select
 Use CSS to design flag images and select elements as you want. Use following CSS selector for flag images:
 ```
 <style>
@@ -177,7 +177,7 @@ Use following CSS selector for select elements:
 </style>
 ```
 
-# How the Correct Translation is Showed or Hided in inline translations
+# How the Correct Translation is Showed or Hided in Inline Translations
 The Javascript code generates as first child of head tag a "style" tag which includes CSS styles to show the selected language translations and hide unselected languages. Below is and example of the content of style tag. Do not insert this "style" tag into your HTML, Javascript creates it automatically.
 ```
 <style>
