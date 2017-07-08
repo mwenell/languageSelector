@@ -26,6 +26,7 @@ Test the language selector:
 
 # Known Bugs
 - Click on language flag image does not update the selected language in dropdown select element of language
+- Unlisted languages in "data-languages" will show for users. 
 
 # Example HTML Code
 Below is an example HTML code when using inline lang() parameter in translations.
